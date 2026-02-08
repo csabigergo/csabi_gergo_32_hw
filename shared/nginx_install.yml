@@ -1,0 +1,23 @@
+---
+- name: nginx install
+  hosts: [web_server]
+  become: yes
+  tasks:
+
+   -  name: Install nginx package
+      ansible.builtin.package:
+        name: nginx
+        state: present
+      notify: Restart Nginx
+
+   -  name: html fájl átírása
+      template:
+        src: index.html
+        dest: /usr/share/nginx/html/index.html
+  
+  handlers:
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+
