@@ -14,10 +14,12 @@
       template:
         src: index.html
         dest: /usr/share/nginx/html/index.html
+        
+   - name: Download Repo
+     script: ./git.sh
   
   handlers:
     - name: Restart Nginx
       ansible.builtin.service:
         name: nginx
         state: restarted
-
