@@ -14,9 +14,26 @@
       template:
         src: index.html
         dest: /usr/share/nginx/html/index.html
-  
+
+   -  name: HTTps engedélyezése
+      ansible.posix.firewalld:
+        service: https
+        state: enabled
+        permanent: true
+        immediate: true
+        offline: true
+        
+   -  name: HTTp engedélyezése
+      ansible.posix.firewalld:
+        service: http
+        state: enabled
+        permanent: true
+        immediate: true
+        offline: true
+
   handlers:
     - name: Restart Nginx
       ansible.builtin.service:
         name: nginx
         state: restarted
+
