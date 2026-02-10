@@ -1,2 +1,2 @@
 [web_server]
-web ansible_host=web ansible_port=22 ansible_user=vagrant ansible_ssh_pass=vagrant
+web ansible_host=web ansible_port=22 ansible_user=homework ansible_ssh_pass=homework
